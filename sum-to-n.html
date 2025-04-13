@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sum from 1 to N</title>
+</head>
+<body>
+  <h2>Sum from 1 to N</h2>
+  <input type="number" id="n" placeholder="Enter a number">
+  <button onclick="sumToN()">Calculate</button>
+  <p id="result"></p>
+
+  <script>
+    function sumToN() {
+      const n = parseInt(document.getElementById('n').value);
+      let sum = 0;
+      for (let i = 1; i <= n; i++) {
+        sum += i;
+      }
+      document.getElementById('result').innerText = `Sum from 1 to ${n} is ${sum}`;
+    }
+  </script>
+</body>
+</html>

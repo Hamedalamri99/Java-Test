@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Compare Two Numbers</title>
+</head>
+<body>
+  <h2>Compare Two Numbers</h2>
+  <input type="number" id="a" placeholder="Enter first number">
+  <input type="number" id="b" placeholder="Enter second number">
+  <button onclick="compare()">Compare</button>
+  <p id="result"></p>
+
+  <script>
+    function compare() {
+      const a = parseFloat(document.getElementById('a').value);
+      const b = parseFloat(document.getElementById('b').value);
+
+      let result = '';
+        if (a > b) result = `${a} is larger than ${b}`;
+        else if (b > a) result = `${b} is larger than ${a}`;
+        else result = `${a} and ${b} are equal`;
+
+
+      document.getElementById('result').innerText = result;
+    }
+  </script>
+</body>
+</html>
