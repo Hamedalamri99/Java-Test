@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Practice Tasks</title>
+</head>
+<body>
+
+  <h2>1. Reverse an Array</h2>
+  <label for="arrayInput">Enter array values (comma-separated):</label>
+  <input type="text" id="arrayInput" placeholder="1,2,3,4,5">
+  <button onclick="reverseArray()">Reverse</button>
+  <p id="reverseResult"></p>
+
+  <hr>
+
+  <!-- 2. Filter Positive Numbers -->
+  <h2>2. Filter Positive Numbers</h2>
+  <label for="positiveInput">Enter numbers (comma-separated):</label>
+  <input type="text" id="positiveInput" placeholder="-1,0,2,3,-5">
+  <button onclick="filterPositive()">Filter</button>
+  <p id="positiveResult"></p>
+
+  <hr>
+
+  <h3>3. Sum of Array Elements</h3>
+  <label for="sumInput">Enter numbers (comma-separated):</label>
+  <input type="text" id="sumInput" placeholder="1,2,3,4">
+  <button onclick="sumArray()">Sum</button>
+  <p id="sumResult"></p>
+
+  <hr>
+
+  <h4>4. Count Word Occurrences</h4>
+  <label for="textInput">Enter a sentence:</label>
+  <input type="text" id="textInput" placeholder="hello world, Welcome to 2025">
+  <button onclick="countWords()">Count</button>
+  <p id="wordCountResult"></p>
+
+  <script>
+    
+    function reverseArray() {
+      const input = document.getElementById('arrayInput').value;
+      const array = input.split(',').map(item => item.trim());
+      document.getElementById('reverseResult').innerText = "Reversed Array: " + array.reverse().join(', ');
+    }
+
+    function filterPositive() {
+      const input = document.getElementById('positiveInput').value;
+      const array = input.split(',').map(Number);
+      const positives = array.filter(num => num > 0);
+      document.getElementById('positiveResult').innerText = "Positive Numbers: " + positives.join(', ');
+             }
+
+    function sumArray() {
+      const input = document.getElementById('sumInput').value;
+      const array = input.split(',').map(Number);
+      const sum = array.reduce((acc, num) => acc + num, 0);
+      document.getElementById('sumResult').innerText = "Sum: " + sum;
+    }
+
+    function countWords() {
+      const input = document.getElementById('textInput').value.trim().toLowerCase();
+      const words = input.split(/\s+/);
+      const wordCount = {};
+      for (let word of words) {
+        wordCount[word] = (wordCount[word] || 0) + 1;
+      }
+      let output = "";
+      for (let word in wordCount) {
+        output += `${word}: ${wordCount[word]}\n`;
+      }
+      document.getElementById('wordCountResult').innerText = output;
+    }
+  </script>
+
+</body>
+</html>

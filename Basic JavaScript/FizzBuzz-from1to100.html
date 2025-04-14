@@ -26,7 +26,7 @@
   <h4>FizzBuzz Checker</h4>
   <label for="userNumber">Enter a number (1 - 100):</label>
   <input type="number" id="userNumber" min="1" max="100">
-  <button onclick="checkFizzBuzz()">Check FizzBuzz</button>
+  <button onclick="runFizzBuzz()">Check FizzBuzz</button>
   <p id="resultFizzBuzz"></p>
 
   <hr>
@@ -74,7 +74,7 @@
     }
 
     // 3. FizzBuzz Checker
-    function checkFizzBuzz() {
+    function runFizzBuzz() {
       const num = parseInt(document.getElementById('userNumber').value);
       const result = document.getElementById('resultFizzBuzz');
 
@@ -83,15 +83,18 @@
         return;
       }
 
-      if (num % 3 === 0 && num % 5 === 0) {
-        result.innerText = "FizzBuzz ✅";
-      } else if (num % 3 === 0) {
-        result.innerText = "Fizz ✅";
-      } else if (num % 5 === 0) {
-        result.innerText = "Buzz ✅";
-      } else {
-        result.innerText = `${num} is not divisible by 3 or 5 ❌`;
+      for (let i = 1; i <= num; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+          alert("FizzBuzz");
+        } else if (i % 3 === 0) {
+          alert("Fizz");
+        } else if (i % 5 === 0) {
+          alert("Buzz");
+        } else {
+          alert(i);
+        }
       }
+      result.innerText = `Finished checking FizzBuzz up to ${num}.`;
     }
 
     // 4. Find the Largest Number
@@ -111,7 +114,7 @@
     // 5. Vowel Counter
     function countVowels() {
       const text = document.getElementById('stringInput').value.toLowerCase();
-      const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+      const vowels = ['a', 'e', 'i', 'o', 'u'];
       let count = 0;
 
       for (let char of text) {
