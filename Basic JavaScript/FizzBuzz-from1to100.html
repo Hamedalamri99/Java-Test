@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Practice Features</title>
+</head>
+<body>
+
+  <!-- 1. Even or Odd Checker -->
+  <h2>Even or Odd Checker</h2>
+  <input type="number" id="evenOddInput" placeholder="Enter a number">
+  <button onclick="checkEvenOdd()">Check Even or Odd</button>
+  <p id="evenOddResult"></p>
+
+  <hr>
+
+  <!-- 2. Sum of Numbers 1 to N -->
+  <h3>Sum from 1 to N</h3>
+  <input type="number" id="sumToNInput" placeholder="Enter a number">
+  <button onclick="sumToN()">Calculate Sum</button>
+  <p id="sumToNResult"></p>
+
+  <hr>
+
+  <!-- 3. FizzBuzz -->
+  <h4>FizzBuzz Checker</h4>
+  <label for="userNumber">Enter a number (1 - 100):</label>
+  <input type="number" id="userNumber" min="1" max="100">
+  <button onclick="checkFizzBuzz()">Check FizzBuzz</button>
+  <p id="resultFizzBuzz"></p>
+
+  <hr>
+
+  <!-- 4. Find Largest Number -->
+  <h5>Find the Largest Number</h5>
+  <label for="numberArray">Enter numbers separated by commas:</label>
+  <input type="text" id="numberArray" placeholder="2,5,7,10">
+  <button onclick="findLargestNumber()">Find Largest</button>
+  <p id="resultLargestNumber"></p>
+
+  <hr>
+
+  <!-- 5. Vowel Counter -->
+  <h6>Count Vowels in a String</h6>
+  <label for="stringInput">Enter a string:</label>
+  <input type="text" id="stringInput" placeholder="Enter text here">
+  <button onclick="countVowels()">Count Vowels</button>
+  <p id="resultVowels"></p>
+
+  <script>
+    // 1. Even or Odd Checker
+    function checkEvenOdd() {
+      const num = parseInt(document.getElementById('evenOddInput').value);
+      if (isNaN(num)) {
+        document.getElementById('evenOddResult').innerText = "❌ Please enter a valid number.";
+        return;
+      }
+      const result = (num % 2 === 0) ? "Even" : "Odd";
+      document.getElementById('evenOddResult').innerText = `${num} is ${result}`;
+    }
+
+    // 2. Sum from 1 to N
+    function sumToN() {
+      const n = parseInt(document.getElementById('sumToNInput').value);
+      if (isNaN(n) || n < 1) {
+        document.getElementById('sumToNResult').innerText = "❌ Please enter a positive integer.";
+        return;
+      }
+      let sum = 0;
+      for (let i = 1; i <= n; i++) {
+        sum += i;
+      }
+      document.getElementById('sumToNResult').innerText = `✅ Sum from 1 to ${n} is ${sum}`;
+    }
+
+    // 3. FizzBuzz Checker
+    function checkFizzBuzz() {
+      const num = parseInt(document.getElementById('userNumber').value);
+      const result = document.getElementById('resultFizzBuzz');
+
+      if (isNaN(num) || num < 1 || num > 100) {
+        result.innerText = "❌ Please enter a valid number between 1 and 100.";
+        return;
+      }
+
+      if (num % 3 === 0 && num % 5 === 0) {
+        result.innerText = "FizzBuzz ✅";
+      } else if (num % 3 === 0) {
+        result.innerText = "Fizz ✅";
+      } else if (num % 5 === 0) {
+        result.innerText = "Buzz ✅";
+      } else {
+        result.innerText = `${num} is not divisible by 3 or 5 ❌`;
+      }
+    }
+
+    // 4. Find the Largest Number
+    function findLargestNumber() {
+      const input = document.getElementById('numberArray').value;
+      const numberArray = input.split(',').map(num => parseFloat(num.trim()));
+
+      if (!input || numberArray.some(isNaN)) {
+        document.getElementById('resultLargestNumber').innerText = "❌ Please enter valid numbers separated by commas.";
+        return;
+      }
+
+      const largest = Math.max(...numberArray);
+      document.getElementById('resultLargestNumber').innerText = `✅ Largest Number: ${largest}`;
+    }
+
+    // 5. Vowel Counter
+    function countVowels() {
+      const text = document.getElementById('stringInput').value.toLowerCase();
+      const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+      let count = 0;
+
+      for (let char of text) {
+        if (vowels.includes(char)) {
+          count++;
+        }
+      }
+
+      document.getElementById('resultVowels').innerText = `✅ Vowel Count: ${count}`;
+    }
+  </script>
+
+</body>
+</html>
