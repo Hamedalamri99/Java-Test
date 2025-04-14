@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FizzBuzz, Largest Number, and Vowel Counter</title>
+</head>
+<body>
+  <h2>FizzBuzz Number Checker</h2>
+
+  <label for="userNumber">Enter a number (1 - 100):</label>
+  <input type="number" id="userNumber" min="1" max="100">
+  <button onclick="checkFizzBuzz()">Check</button>
+  <p id="resultFizzBuzz"></p>
+
+  <hr>
+
+  <h3>Find the Largest Number</h3>
+  <label for="numberArray">Enter numbers separated by commas:</label>
+  <input type="text" id="numberArray" placeholder="2,5,7,10">
+  <button onclick="findLargestNumber()">Find Largest Number</button>
+  <p id="resultLargestNumber"></p>
+
+  <hr>
+
+  <h4>Count Vowels in a String</h4>
+  <label for="stringInput">Enter a string:</label>
+  <input type="text" id="stringInput" placeholder="Enter text here">
+  <button onclick="countVowels()">Count Vowels</button>
+  <p id="resultVowels"></p>
+
+  <script>
+    function checkFizzBuzz() {
+      const num = parseInt(document.getElementById('userNumber').value);
+      const result = document.getElementById('resultFizzBuzz');
+
+      if (isNaN(num) || num < 1 || num > 100) {
+        result.innerText = "Please enter a valid number between 1 and 100.";
+        return;
+      }
+      if (num % 3 === 0 && num % 5 === 0)
+       { alert("FizzBuzz");
+        result.innerText = "FizzBuzz"; } 
+        else if (num % 3 === 0) 
+        { alert("Fizz");
+        result.innerText = "Fizz"; } 
+        else if (num % 5 === 0) 
+        { alert("Buzz");
+        result.innerText = "Buzz"; }
+        else {
+        alert(num);
+        result.innerText = num; }
+    }
+    function findLargestNumber() {
+      const arrayStr = document.getElementById('numberArray').value;
+      const numberArray = arrayStr.split(',').map(Number);
+      if (numberArray.some(isNaN)) {
+        document.getElementById('resultLargestNumber').innerText = "Please enter valid numbers separated by commas.";
+        return;
+      }
+
+      const largestNumber = Math.max(...numberArray); 
+      document.getElementById('resultLargestNumber').innerText = "Largest Number: " + largestNumber;
+    }
+    function countVowels() {
+      const string = document.getElementById('stringInput').value.toLowerCase();
+      const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+      let vowelCount = 0;
+
+      for (let i = 0; i < string.length; i++) {
+        if (vowels.includes(string[i])) {
+          vowelCount++;
+        }
+      }
+      document.getElementById('resultVowels').innerText = "Vowel Count: " + vowelCount;
+    }
+  </script>
+</body>
+</html>
