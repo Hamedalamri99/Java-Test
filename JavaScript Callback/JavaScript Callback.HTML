@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Callback Examples</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { margin: 10px 5px; padding: 10px 15px; font-size: 14px; }
+    .output { margin-top: 10px; padding: 10px; background: #f9f9f9; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Callback Examples</h1>
+
+  <button onclick="runGreet()">1️⃣ Greet</button>
+  <button onclick="runCalculator()">2️⃣ Calculator</button>
+  <button onclick="runProcessArray()">3️⃣ Process Array</button>
+  <button onclick="runApiCall()">4️⃣ API Call</button>
+  <button onclick="runNestedCallbacks()">5️⃣ Nested Callbacks</button>
+  <button onclick="runDivide()">6️⃣ Divide with Error Handling</button>
+
+  <div id="output" class="output">Click a button to run.</div>
+
+  <script>
+    const outputDiv = document.getElementById("output");
+
+    function runGreet() {
+      function greet(name, callback) {
+        if (typeof callback === "function") {
+          callback(name);
+        } else {
+          console.error("Callback must be a function");
+        }
+      }
+
+      greet("Hamed", (name) => {
+        outputDiv.textContent = `Hello, ${name}!`;
+      });
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////
+    function runCalculator() {
+      function calculate(a, b, operation) {
+        if (typeof operation === "function") {
+          return operation(a, b);
+        } else {
+          throw new Error("Operation must be a function");
+        }
+      }
+
+      const results = [
+        `Addition: ${calculate(10, 3, (x, y) => x + y)}`,
+        `Subtraction: ${calculate(10, 3, (x, y) => x - y)}`,
+        `Multiplication: ${calculate(10, 3, (x, y) => x * y)}`,
+        `Division: ${calculate(10, 3, (x, y) => x / y)}`
+      ];
+
+      outputDiv.innerHTML = `<strong>Calculator Results:</strong><br>` + results.join("<br>");
+    }
+////////////////////////////////////////////////////////////////////////
+    function runProcessArray() {
+      function processArray(arr, callback) {
+        const result = [];
+        for (let i = 0; i < arr.length; i++) {
+          result.push(callback(arr[i]));
+        }
+        return result;
+      }
+
+      const numbers = [1, 2, 3];
+      const words = ["hello", "world", "2025"];
+
+      const doubled = processArray(numbers, n => n * 2);
+      const uppercased = processArray(words, str => str.toUpperCase());
+
+      outputDiv.innerHTML = `
+        <strong>Array Processing:</strong><br>
+        Doubled: ${JSON.stringify(doubled)}<br>
+        Uppercase: ${JSON.stringify(uppercased)}
+      `;
+    }
+///////////////////////////////////////////////////////
+    function runApiCall() {
+      function getData(callback) {
+        outputDiv.innerHTML = "Fetching data... (please wait)";
+        setTimeout(() => {
+          const mockData = { id: 135468, name: "Hamed", age: 26 };
+          callback(mockData);
+        }, 4000);
+      }
+
+      getData((data) => {
+        outputDiv.innerHTML = `<strong>Received API Data:</strong><br>${JSON.stringify(data, null, 2)}`;
+      });
+    }
+//////////////////////////////////////////////////////////////////////////////////////
+    function runNestedCallbacks() {
+      outputDiv.innerHTML = "Starting login... (please wait)";
+
+      function login(username, callback) {
+        setTimeout(() => {
+          const token = "hamed123";
+          outputDiv.innerHTML += "<br>Login successful. Token: " + token;
+          callback(token);
+        }, 2000);
+      }
+
+      function fetchUser(token, callback) {
+        setTimeout(() => {
+          const user = { id: 1245621, name: "Hamed AlAmri" };
+          outputDiv.innerHTML += "<br>User fetched: " + JSON.stringify(user);
+          callback(user);
+        }, 3000);
+      }
+
+      function fetchSettings(user, callback) {
+        setTimeout(() => {
+          const settings = { theme: "dark", notifications: true };
+          outputDiv.innerHTML += "<br>Settings fetched: " + JSON.stringify(settings);
+          callback(settings);
+        }, 2000);
+      }
+
+      login("Hamed AlAmri", (token) => {
+        fetchUser(token, (user) => {
+          fetchSettings(user, (settings) => {
+            outputDiv.innerHTML += `<br><strong>✅ All Done!</strong>`;
+          });
+        });
+      });
+    }
+//////////////////////////////////////////////////////////////////////////////////
+    function runDivide() {
+      function divide(a, b, successCallback, errorCallback) {
+        if (b === 0) {
+          errorCallback("Error: Division by zero is not allowed.");
+        } else {
+          const result = a / b;
+          successCallback(result);
+        }
+      }
+
+      function onSuccess(result) {
+        outputDiv.innerHTML = `<strong>Success:</strong> The result is ${result}`;
+      }
+
+      function onError(errorMessage) {
+        outputDiv.innerHTML = `<strong>Error:</strong> ${errorMessage}`;
+      }
+
+      // Example usage
+      divide(10, 2, onSuccess, onError); // Success case
+      setTimeout(() => divide(10, 0, onSuccess, onError), 4000); // Error case
+    }
+  </script>
+</body>
+</html>
