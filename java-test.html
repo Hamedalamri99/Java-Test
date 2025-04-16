@@ -5,9 +5,59 @@
   <title>Sum from 1 to N</title>
 </head>
 <body>
-  <script>
+  <p id="text"> </p>
+    <button onclick="chngeText()">Click me</button>
 
-    
+    <button onclick="changeColor()">Change Color</button>
+
+    <button onclick="deleteText()">Delete</button>
+    <button onclick="addText()">Add</button> 
+
+    <style>
+      #header { font-size: 50px; color: brown; }
+    </style>
+      <div>
+        <p id="container"></p>
+  
+    <h1 id="header">Hallo world in 2025</h1>
+       </div>
+  <script>
+      
+
+      function changeColor() {
+      const header = document.getElementById("header");
+      header.style.color = header.style.color === "blue" ? "red" : "blue" ;
+      }
+
+
+      function chngeText(){ 
+        console.log("clicked");
+
+        const txtElement = document.getElementById("text");
+        if (txtElement.innerText === "a") {
+          txtElement.innerText = "b";
+        } else if (txtElement.innerText === "b") {
+          txtElement.innerText = "a";
+        } else {
+          txtElement.innerText = "Hello world in 2025";
+        }
+      }
+
+      function deleteText() {
+        const txtElement = document.getElementById("text");
+        txtElement.innerText = "";
+      }
+
+      function addText() {
+        const txtElement = document.getElementById("text");
+        txtElement.innerText = "Added new text!";
+      }
+      console.log(document);
+
+      window.onload = function() {
+        let newParagraph = document.createElement("p");
+        document.getElementById("container").appendChild(newParagraph);
+      };
   </script>
 </body>
 </html>
