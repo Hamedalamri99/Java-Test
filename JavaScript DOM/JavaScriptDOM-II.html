@@ -85,9 +85,9 @@
         function changeImageAlt() {
             console.log("changeImageAlt function called");
             let image = document.getElementById("image");
-            image.alt = "New Alt Text"; // Update the alt text
-            image.src = "R.jpg"; // Use the local image file
-            image.style.width = "300px"; // Adjust the width
+            image.alt = "New Alt Text"; 
+            image.src = "R.jpg"; 
+            image.style.width = "300px"; 
         } 
 
         function changeButtonText() {
@@ -114,7 +114,7 @@
 
         function blurInput() {
             const inputField = document.getElementById("inputField");
-            inputField.blur(); // Removes focus from the input field
+            inputField.blur(); 
             console.log("Input field has lost focus.");
             if (inputField.value) {
                 alert("Input field value: " + inputField.value);
@@ -157,7 +157,7 @@
         function changeTextColor() {
             const colorPicker = document.getElementById("colorPicker");
             const text = document.getElementById("uppercaseInput");
-            text.style.color = colorPicker.value; // Apply the selected color to the text
+            text.style.color = colorPicker.value; 
         }
 
         function resetPage() {
