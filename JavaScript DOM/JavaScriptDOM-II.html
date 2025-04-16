@@ -9,7 +9,7 @@
     <button onclick="changeTitle()">Change Title</button>
     <hr>
     <h3>2.Change Image Alt Text</h3>
-    <img id="image" src="https://th.bing.com/th/id/R.9e757a8430aa0c8959a8b562359cc8a8?rik=8J5TmpSCUpE2nA&pid=ImgRaw&r=0" alt="Placeholder Image">
+    <img id="image" src="R.jpg" alt="Placeholder Image">
     <button onclick="changeImageAlt()">Change Image Alt</button>
     <style>
         img {
@@ -17,7 +17,6 @@
             height: 200px;
         }
     </style>
-    <button onclick="changeImageAlt()">Change Image Alt</button>
     <hr>
     <h3>3. Change Button Text When Clicked</h3>
     <button id="button" onclick="changeButtonText()">Click me</button>
@@ -52,9 +51,8 @@
     <hr>
     <h3>10.Highlight List Items</h3>
     <ul id="list">
-        <li>one Time</li>
-        <li>tow Time</li>
-    <button onclick="highlightListItems()">Highlight List Items</button>
+        <li onclick=" highlightListItems()">one Time</li>
+        <li onclick=" highlightListItems()">tow Time</li>
     </ul>
     <hr>
     <h3>11.Show && Hide Password</h3>
@@ -87,9 +85,10 @@
         function changeImageAlt() {
             console.log("changeImageAlt function called");
             let image = document.getElementById("image");
-            image.alt = "New Alt Text";
-            image.src = "https://th.bing.com/th/id/R.9e757a8430aa0c8959a8b562359cc8a8?rik=8J5TmpSCUpE2nA&pid=ImgRaw&r=0";
-            image.style.width = "300px";} 
+            image.alt = "New Alt Text"; // Update the alt text
+            image.src = "R.jpg"; // Use the local image file
+            image.style.width = "300px"; // Adjust the width
+        } 
 
         function changeButtonText() {
             const button = document.getElementById("button");
