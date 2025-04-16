@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript DOM</title>
+</head>
+
+<body>
+  <h1 id="header">Hello world in 2025</h1>
+  <p id="textToggle">a</p>
+  <button onclick="changeText()">Click me</button>
+
+  <hr>
+
+  <div id="container" style="width: 100px; height: 50px; background-color: lightgray;"></div>
+  <button onclick="changeStyle()">Change Style</button>
+
+  <hr>
+
+  <p id="textVisibility">Hello world in 2025</p>
+  <button onclick="showHideElement()">Show/Hide</button>
+
+  <hr>
+
+  <ul id="list"></ul>
+  <button onclick="createAppendElement()">Create</button>
+
+  <hr>
+
+  <p id="textDelete">Hello world in 2025</p>
+  <button onclick="deleteElement()">Delete</button>
+
+  <script>
+  
+    function changeText() {
+      const textElement = document.getElementById("textToggle");
+      if (textElement.innerText === "a") {
+        textElement.innerText = "b";
+      } else if (textElement.innerText === "b") {
+        textElement.innerText = "a";
+      } else {
+        textElement.innerText = "Hello world in 2025";
+      }
+    }
+
+    function changeStyle() {
+      const container = document.getElementById("container");
+      container.style.backgroundColor = container.style.backgroundColor === "lightgray" ? "red" : "lightgray";
+    }
+
+    function showHideElement() {
+      const textElement = document.getElementById("textVisibility");
+      textElement.style.display = (textElement.style.display === "none") ? "block" : "none";
+    }
+
+    function createAppendElement() {
+      const listElement = document.getElementById("list");
+      const newListItem = document.createElement("li");
+      newListItem.innerText = "Welcome baby";
+      listElement.appendChild(newListItem);
+    }
+
+    function deleteElement() {
+      const textElement = document.getElementById("textDelete");
+      if (textElement) {
+        textElement.remove();
+      } else {
+        console.log("Element already deleted.");
+      }
+    }
+  </script>
+
+</body>
+</html>

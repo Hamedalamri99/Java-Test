@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Text Example</title>
+</head>
+<body>
+  <p id="txt">Hello</p>
+  <button onclick="chngeText()">Click me</button>
+
+  <h1>Hello world in 2025</h1>
+  <script>
+    function chngeText() {
+      console.log("Button clicked");
+
+      const textElement = document.getElementById("txt");
+      if (textElement.innerText === "a") {
+        textElement.innerText = "Option A selected";
+      } else if (textElement.innerText === "b") {
+        textElement.innerText = "Hello world in 2025";
+      } else if (textElement.innerText === "c") {
+        textElement.innerText = "Option C selected";
+      } else {
+        textElement.innerText = "Default text updated";
+      }
+    }
+  </script>
+</body>
+</html>
